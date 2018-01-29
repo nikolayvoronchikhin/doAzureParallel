@@ -314,18 +314,23 @@ makeCluster <-
         )
       }
     }
-
+    
     if (wait) {
       if (!grepl("PoolExists", response)) {
         waitForNodesToComplete(poolConfig$name, 60000)
       }
     }
-
+    
+    printClusterInformation(
+      poolConfig$name,
+      poolConfig$vmSize,
+      pool$targetDedicatedNodes,
+      pool$targetLowPriorityNodes,
+      dockerImage
+    )
+    
     cat("Your cluster has been registered.", fill = TRUE)
-    cat(sprintf("Dedicated Node Count: %i", pool$targetDedicatedNodes),
-        fill = TRUE)
-    cat(sprintf("Low Priority Node Count: %i", pool$targetLowPriorityNodes),
-        fill = TRUE)
+    
     config$poolId <- poolConfig$name
     options("az_config" = config)
     return(getOption("az_config"))

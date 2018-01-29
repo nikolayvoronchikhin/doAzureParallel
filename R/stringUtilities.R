@@ -50,3 +50,19 @@ printJobInformation <- function(jobId,
   cat(sprintf("autoDeleteJob: %s", as.character(autoDeleteJob)), fill = TRUE)
   cat(strrep('=', options("width")), fill = TRUE)
 }
+
+printClusterInformation <- function(clusterId,
+                                    vmSize,
+                                    targetDedicatedNodes,
+                                    targetLowPriorityNodes,
+                                    containerImage) {
+  cat(strrep('=', options("width")), fill = TRUE)
+  cat(sprintf("Cluster Name: %s", clusterId), fill = TRUE)
+  cat(sprintf("Container Image: %s", containerImage), fill = TRUE)
+  cat(sprintf("VM Size: %s", vmSize), fill = TRUE)
+  cat("Nodes", fill = TRUE)
+  cat(sprintf("\tDedicated: %s", as.character(targetDedicatedNodes)), fill = TRUE)
+  cat(sprintf("\tLow Priority: %s", as.character(targetLowPriorityNodes)), fill = TRUE)
+  cat(strrep('=', options("width")), fill = TRUE)
+}
+
