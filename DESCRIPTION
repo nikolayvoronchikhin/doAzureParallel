@@ -21,7 +21,8 @@ Imports:
     jsonlite,
     rjson,
     xml2,
-    R6
+    R6,
+    zip
 Suggests:
     testthat,
     caret,
